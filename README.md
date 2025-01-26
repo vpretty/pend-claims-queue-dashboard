@@ -12,25 +12,25 @@ Medical claims can pend for a variety of reasons. This can range from incomplete
 ## ETL Pipeline
 On a regularly scheduled basis, a pipeline I wrote extracted pending claims data from CCA's claims management systems database. This data was loaded into a pandas dataframe for transformation. After being formatted, certain fields were used to query CCA's provider database to pull additional data about rendering providers and service locations. After this additional data was transformed and joined to the original data frame, a series of calculations were performed to determine the following metrics:
 
-- Total Claims in Pending Queue. Unique claims were determined by claim id
-- Total Dollar Amount of Pending Claims.
-- Total Unique Practitioners.
-- Total Unique Provider Groups.
-- Total Unique Facilities.
+- Total Claims in Pending Queue. Unique claims were determined by claim id.
+- Total Dollar Amount of Pending Claims. 
+- Total Unique Practitioners. Unique practitioners were determined by NPI.
+- Total Unique Provider Groups. Unique provider groups were determined by TIN.
+- Total Unique Facilities. Unique facilities were determined by concatenating address fields and using the resulting string.
 - Total Claims Cleared by Date.
-- Aging Claims by Age Group.
+- Aging Claims by Age Group. Age groups are as follows: 0-9 days, 10-20 days, 21-25 days, 26-30 days, <=30 days, 31-44 days, 45-60 days, 61-90 days, >90 days, and >30 days.
 - Top 10, 20, and 30 Claims by Age.
-- Aging Claims by Pending Category.
+- Aging Claims by Pending Category. Pending category was determined by the presence of certain phrases in claims comments. The pending categories are as follows: missing practitioner, missing group, missing agreement, entity category, DOS prior to effective date, address, and misc.
 
 Because this project uses data sourced from .csv files, there were no actual connections made to any databases. As a showcase, I've included a script (database-export.py) based on the original pipeline which exports data from a hypothetical Teradata database and then exports additional data from a Microsoft SQL server database.
 
 To simulate data exported from a pending claims queue, I added a number of fields to the synthetic Medicare claims dataset. You can find the script used to generate this data in cms-generation.py. The following fields were added:
 - Rendering Provider First Name and Last Name. These names were randomly assigned to included providers by NPI and were pulled from the CMS.gov National Downloadable file of clinicians. This dataset can be found here: https://data.cms.gov/provider-data/dataset/mj5m-pzi6
 - Provider Group.
-- Service Location Address. Address 1, City, State, and Zip
+- Service Location Address. Address 1, City, State, and Zip were added
 - Clear Date. The date the claim "left" the queue, aka the date the claim was resolved. 15% of the claims in the dataset were randomly selected and assigned a clear date between 1 and 90 days after reciept date, provided this date would be less than the "current date" (see Claim Age for details on "current date).  
 - Claim Age. Applicable only to claims which weren't given a clear date. "Current Date" was chosen to be one day after the max date of the synthetic Medicare Claims dataset. Claim ages were then calculated using this chosen date.
-- Comments. Within CCA's claim's management software, claim adjudicators are able to leave comments
+- Comments. Within CCA's claim's management software, claim adjudicators are able to leave comments to signal why a claim was placed in the pending queue. While this is a free-text field, I was able to extract a list of common phrases used in claims comments. These phrases were randomly assigned to included claims.
 
 
 ## Dashboard Overview
