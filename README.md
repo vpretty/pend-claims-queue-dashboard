@@ -12,6 +12,15 @@ Medical claims can pend for a variety of reasons. This can range from incomplete
 ## ETL Pipeline
 On a regularly scheduled basis, a pipeline I wrote extracted pending claims data from CCA's claims management systems database. This data was loaded into a pandas dataframe for transformation. After being formatted, certain fields were used to query CCA's provider database to pull additional data about rendering providers and service locations. After this additional data was transformed and joined to the original data frame, a series of calculations were performed to determine the following metrics:
 
+- Total Claims in Pending Queue.
+- Total Dollar Amount of Pending Claims.
+- Total Unique Practitioners.
+- Total Unique Provider Groups.
+- Total Unique Facilities.
+- Total Claims Cleared by Date.
+- Aging Claims by Age Group.
+- Top 10, 20, and 30 Claims by Age.
+- Aging Claims by Pending Category.
 
 Because this project uses data sourced from .csv files, there were no actual connections made to any databases. As a showcase, I've included a script (database-export.py) based on the original pipeline which exports data from a hypothetical Teradata database and then exports additional data from a Microsoft SQL server database.
 
