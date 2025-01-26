@@ -12,7 +12,7 @@ Medical claims can pend for a variety of reasons. This can range from incomplete
 ## ETL Pipeline
 On a regularly scheduled basis, a pipeline I wrote extracted pending claims data from CCA's claims management systems database. This data was loaded into a pandas dataframe for transformation. After being formatted, certain fields were used to query CCA's provider database to pull additional data about rendering providers and service locations. After this additional data was transformed and joined to the original data frame, a series of calculations were performed to determine the following metrics:
 
-- Total Claims in Pending Queue.
+- Total Claims in Pending Queue. Unique claims were determined by claim id
 - Total Dollar Amount of Pending Claims.
 - Total Unique Practitioners.
 - Total Unique Provider Groups.
