@@ -9,9 +9,9 @@ Commonwealth Care Alliance is a healthcare services organization which provides 
 
 Medical claims can pend for a variety of reasons. This can range from incomplete provider or address data to data errors, such as the date of service being prior to the effective date of the location. While CCA had multiple different queues for pended claims, for simplicity's sake, this project outline only focuses on the primary pending claims queue.
 
-## ETL Pipeline Overview
+## ETL Pipeline
 On a regularly scheduled basis, a pipeline I wrote extracted pending claims data from CCA's claims management systems database. This data was loaded into a pandas dataframe for transformation. After being formatted, certain fields were used to query CCA's provider database to pull additional data about rendering providers and service locations. After this additional data was transformed and joined to the original data frame, a series of calculations were performed to determine the following metrics:
-- 
+
 
 Because this project uses data sourced from .csv files, there were no actual connections made to any databases. As a showcase, I've included a script (database-export.py) based on the original pipeline which exports data from a hypothetical Teradata database and then exports additional data from a Microsoft SQL server database.
 
