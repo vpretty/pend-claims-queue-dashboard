@@ -24,7 +24,7 @@ On a regularly scheduled basis, a pipeline I wrote extracted pending claims data
 
 To simulate data exported from a pending claims queue, I added a number of fields to the synthetic Medicare claims dataset. You can find the script used to generate this data in cms_generation.py. The following fields were added:
 - Rendering Provider First Name and Last Name. These names were randomly assigned to included providers by NPI and were pulled from the CMS.gov National Downloadable file of clinicians. This dataset can be found here: https://data.cms.gov/provider-data/dataset/mj5m-pzi6
-- Service Location Address. Address 1, City, State, and Zip were added at the same time as rendering provider first name and last name, and were also pulled from the National Downloadable file of clinicians.
+- Service Location Address. Address 1, City, State, and Zip were added at the same time as rendering provider first name and last name, and were also pulled from the National Downloadable file of clinicians. In the original project, 
 - Facility ID. These were also assigned at the same time as rendering provider first and last name and were pulled from the National Downloadable file of clinicians.
 - Clear Date. The date the claim "left" the queue, aka the date the claim was resolved. 15% of the claims in the dataset were randomly selected to have a clear date. This clear date was taken from column CLM_THRU_DT.
 - Claim Age. Applicable only to claims which weren't given a clear date. "Current Date" was chosen to be one day after the max date of the synthetic Medicare Claims dataset column "CLM_THRU_DT". Claim ages were then calculated using this chosen date.
