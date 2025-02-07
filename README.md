@@ -26,8 +26,8 @@ To simulate data exported from a pending claims queue, I added a number of field
 - Rendering Provider First Name and Last Name. These names were randomly assigned to included providers by NPI and were pulled from the CMS.gov National Downloadable file of clinicians. This dataset can be found here: https://data.cms.gov/provider-data/dataset/mj5m-pzi6
 - Service Location Address. Address 1, City, State, and Zip were added at the same time as rendering provider first name and last name, and were also pulled from the National Downloadable file of clinicians.
 - Facility ID. These were also assigned at the same time as rendering provider first and last name and were pulled from the National Downloadable file of clinicians.
-- Clear Date. The date the claim "left" the queue, aka the date the claim was resolved. 15% of the claims in the dataset were randomly selected and assigned a clear date between 1 and 90 days after reciept date, provided this date would be less than the "current date" (see Claim Age for details on "current date").  
-- Claim Age. Applicable only to claims which weren't given a clear date. "Current Date" was chosen to be one day after the max date of the synthetic Medicare Claims dataset. Claim ages were then calculated using this chosen date.
+- Clear Date. The date the claim "left" the queue, aka the date the claim was resolved. 15% of the claims in the dataset were randomly selected to have a clear date. This clear date was taken from column CLM_THRU_DT.
+- Claim Age. Applicable only to claims which weren't given a clear date. "Current Date" was chosen to be one day after the max date of the synthetic Medicare Claims dataset column "CLM_THRU_DT". Claim ages were then calculated using this chosen date.
 - Comments. Within CCA's claim's management software, claim adjudicators are able to leave comments to signal why a claim was placed in the pending queue. While this is a free-text field, I was able to extract a list of common phrases used in claims comments. These phrases were randomly assigned to included claims.
 
 
