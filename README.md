@@ -22,7 +22,7 @@ On a regularly scheduled basis, a pipeline I wrote extracted pending claims data
 - Top 10, 20, and 30 Claims by Age.
 - Aging Claims by Pending Category. Pending category was determined by the presence of certain phrases in claims comments. The pending categories are as follows: missing practitioner, missing group, missing agreement, entity category, DOS prior to effective date, address, and misc.
 
-To simulate data exported from a pending claims queue, I added a number of fields to the synthetic Medicare claims dataset. You can find the script used to generate this data in cms-generation.py. The following fields were added:
+To simulate data exported from a pending claims queue, I added a number of fields to the synthetic Medicare claims dataset. You can find the script used to generate this data in cms_generation.py. The following fields were added:
 - Rendering Provider First Name and Last Name. These names were randomly assigned to included providers by NPI and were pulled from the CMS.gov National Downloadable file of clinicians. This dataset can be found here: https://data.cms.gov/provider-data/dataset/mj5m-pzi6
 - Service Location Address. Address 1, City, State, and Zip were added at the same time as rendering provider first name and last name, and were also pulled from the National Downloadable file of clinicians.
 - Facility ID. These were also assigned at the same time as rendering provider first and last name and were pulled from the National Downloadable file of clinicians.
