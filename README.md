@@ -22,6 +22,8 @@ On a regularly scheduled basis, a pipeline I wrote extracted pending claims data
 - Top 10, 20, and 30 Claims by Age.
 - Aging Claims by Pending Category. Pending category was determined by the presence of certain phrases in claims comments. The pending categories are as follows: missing practitioner, missing group, missing agreement, entity category, DOS prior to effective date, address, and misc.
 
+You can find the pipeline used to generate these calculations in calc_totals.py.
+
 To simulate data exported from a pending claims queue, I added a number of fields to the synthetic Medicare claims dataset. You can find the script used to generate this data in cms_generation.py. The following fields were added:
 - Rendering Provider First Name and Last Name. These names were randomly assigned to included providers by NPI and were pulled from the CMS.gov National Downloadable file of clinicians. This dataset can be found here: https://data.cms.gov/provider-data/dataset/mj5m-pzi6
 - Service Location Address. Address 1, City, State, and Zip were added at the same time as rendering provider first name and last name, and were also pulled from the National Downloadable file of clinicians. In the original project, 
@@ -29,6 +31,7 @@ To simulate data exported from a pending claims queue, I added a number of field
 - Clear Date. The date the claim "left" the queue, aka the date the claim was resolved. 15% of the claims in the dataset were randomly selected to have a clear date. This clear date was taken from column CLM_THRU_DT.
 - Claim Age. Applicable only to claims which weren't given a clear date. "Current Date" was chosen to be one day after the max date of the synthetic Medicare Claims dataset column "CLM_THRU_DT". Claim ages were then calculated using this chosen date.
 - Comments. Within CCA's claim's management software, claim adjudicators are able to leave comments to signal why a claim was placed in the pending queue. While this is a free-text field, I was able to extract a list of common phrases used in claims comments. These phrases were randomly assigned to included claims.
+- Report Date. The date the data was "pulled". This field is generated in calc_totals.py and is used in visualizations in the Power BI dashboard.
 
 
 ## Dashboard Overview
