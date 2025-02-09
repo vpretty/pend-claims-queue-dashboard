@@ -36,3 +36,5 @@ To simulate data exported from a pending claims queue, I added a number of field
 
 ## Dashboard Overview
 Though the data is different, all parts of this dashboard reflect the layout and functionality of the original.
+
+For the purposes of demonstrating visuals, the data generated in calc_totals.py was duplicated with sequential dates to mimic a week's worth of data.
