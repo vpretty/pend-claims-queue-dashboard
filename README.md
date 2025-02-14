@@ -35,10 +35,19 @@ To simulate data exported from a pending claims queue, I added a number of field
 
 
 ## Dashboard Overview
-Though the data is different, all parts of this dashboard reflect the layout and functionality of the original.
+Though the data is different, all parts of this dashboard reflect the layout and functionality of the original. You can find this dashboard in Pending Claims Dashboard.pbix.
 
 For the purposes of demonstrating visuals, some of the data generated in calc_totals.py was duplicated with sequential dates to mimic a week's worth of data.
 
 The tabs included in the dashboard are as follows:
 - Summary. A summary of key metrics with a card displaying total claims in the pending queue.
-- Top pending claims by age. 
+- Top pending claims by age. Pending claims ordered by age, with filters for top 10, top 20, and top 30 claims.
+- Pending claims. All pending claims with age category.
+- Pending claims by category. A count of unique claims by the category of their associated comment.
+- Cleared claims. All cleared claims.
+- Total groups. Total unique groups by group name.
+- Total facilities. Total unique facilities by address.
+- Total individuals. Total unique individual practitioners by NPI.
+- Total claims left. Total claims cleared from queue per day.
+- Total claims. Total claims in pending queue per day.
+- Total dollars. Total cost claims in pending queue.
